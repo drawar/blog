@@ -33,8 +33,6 @@ twitter_handle:
 #fill in disqus shortname to use disqus
 disqus: van981
 
-google_analytics: UA-XXXXX-X
-
 # social icons and sharing options
 social:
   - icon:	linkedin
@@ -83,7 +81,7 @@ sass:
   style: compressed
 
 # https://github.com/mojombo/jekyll/wiki/Permalinks
-permalink:   /:categories/:title/
+#permalink:   /:categories/:title/
 
 kramdown:
   input: GFM
