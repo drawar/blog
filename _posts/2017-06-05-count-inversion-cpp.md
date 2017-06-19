@@ -3,6 +3,7 @@ layout: post
 title:  "Counting Inversions - C++"
 date:   2017-06-05
 tags: algo cpp
+image: /assets/article_images/2014-08-29-welcome-to-jekyll/desktop.JPG
 comments: true
 ---
 
