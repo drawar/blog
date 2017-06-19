@@ -1,14 +1,17 @@
 # Build settings
 gems:
-  - jemoji
+  - jekyll-seo-tag
+  - jekyll-sitemap
   - jekyll-paginate
+  - jekyll-gist
+  - jekyll-feed
+  - jemoji
 
 # Site settings
-title: "Mediator"
+title: "Le Hoang Van"
 description: > # this means to ignore newlines until "email:"
-   A Jekyll theme - Medium inspired
 
-email: a-mail@mail.mail
+email: van.lehoang32@gmail.com
 #blog logo
 logo: "/assets/images/df_logo.jpg"
 float_logo: true # true, false (default)
@@ -16,30 +19,30 @@ float_logo: true # true, false (default)
 # blog cover
 cover: "/assets/images/cA4aKEIPQrerBnp1yGHv_IMG_9534-3-2.jpg"
 
-name: 'Dirk Fabisch'
-author: 'Dirk Fabisch'
-author_image: "/assets/images/author.jpg"
+name: 'Le Hoang Van'
+author: 'Le Hoang Van'
+author_image: "/assets/images/author-image.jpg"
 
 paginate:	5
 
-url: "http://myblog.***.***" # the base hostname & protocol for your site
+url: "http://lehoangvan/blog/.***.***" # the base hostname & protocol for your site
 baseurl: ""
 #used to display twitter cards
-twitter_handle: '@dirkfabisch'
+twitter_handle: 
 
 #fill in disqus shortname to use disqus
-#disqus: disqus-shortname
+disqus: van981
 
-#google_analytics: UA-XXXXX-X
+google_analytics: UA-XXXXX-X
 
 # social icons and sharing options
 social:
-  - icon:	twitter
-    url:	https://twitter.com/dirkfabisch
-    desc: Follow me on twitter
-    share_url: http://twitter.com/share
-    share_title: ?text=
-    share_link: "&amp;url="
+  - icon:	linkedin
+    url:	https://linkedin.com/in/lehoangvan
+    desc: Add me on LinkedIn
+    share_url: 
+    share_title: 
+    share_link: 
 
 #  - icon:	facebook
 #    url:	https://facebook.com/???
@@ -49,7 +52,7 @@ social:
 #    share_link: "&amp;u="
 
   - icon:	github
-    url:	https://github.com/dirkfabisch
+    url:	https://github.com/drawar
     desc:	Fork me on github
     share_url:
     share_title:
@@ -61,3 +64,31 @@ social:
 #    share_url:
 #    share_title:
 #    share_link:
+
+
+# Analytics and webmaster tools stuff goes here
+google_analytics:   
+google_verify:      
+# https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
+bing_verify:         
+
+# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone:    Asia/Singapore
+future:      false  # publish future dated posts --  true, false (default) 
+highlighter: rouge
+markdown:    kramdown
+
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# https://github.com/mojombo/jekyll/wiki/Permalinks
+permalink:   /:categories/:title/
+
+kramdown:
+  input: GFM
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  enable_coderay: false
