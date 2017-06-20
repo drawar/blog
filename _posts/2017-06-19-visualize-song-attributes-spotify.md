@@ -74,14 +74,13 @@ get_playlist_tracks <- function(user_id, playlist_id, header_value) {
     return(df)
 }
 
-
 user_id <- 'spotify'
 playlist_id <- '37i9dQZF1CyXyPUy57ueoa'
 
 top_song <- get_playlist_tracks(user_id, playlist_id, header_value)
 top_song <- top_song %>% select(-c(mode, instrumentalness, liveness, time_signature, uri, track_href, analysis_url, type))
 str(top_song)
-{% end highlight %}
+{% endhighlight %}
 
 I decided to exclude some attributes that I deemed not relevant to this analysis, namely **mode**, **instrumentalness**, **liveness**, **time signature**, etc. 
 
@@ -98,7 +97,7 @@ I decided to exclude some attributes that I deemed not relevant to this analysis
 ##  $ id          : chr  "2A4nONaOJXSDBvezgxyAV4" "4VrWlk8IQxevMvERoX08iC" "2x5qF66rFO6DERBMNkQAqn" "2CvOqDpQIMw69cCzWqr5yr" ...
 ##  $ duration_ms : num  215427 216120 200387 261160 201400 ...
 ##  $ track_name  : chr  "Take A Bow (Glee Cast Version)" "Chandelier" "(There's Gotta Be) More To Life" "Halo" ...
-{% end highlight %}
+{% endhighlight %}
 
 The attributes, or *features* in machine learning terminology, are the variables that our mathematical models take into consideration when they try to predict stuff. Our final tibble contain the following attributes for each song:
 - **Tempo**: The tempo of the song, measured by beats per minute (BPM).
