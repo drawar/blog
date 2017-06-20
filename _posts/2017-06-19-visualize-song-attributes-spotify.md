@@ -97,10 +97,11 @@ I decided to exclude some attributes that I deemed not relevant to this analysis
 ##  $ id          : chr  "2A4nONaOJXSDBvezgxyAV4" "4VrWlk8IQxevMvERoX08iC" "2x5qF66rFO6DERBMNkQAqn" "2CvOqDpQIMw69cCzWqr5yr" ...
 ##  $ duration_ms : num  215427 216120 200387 261160 201400 ...
 ##  $ track_name  : chr  "Take A Bow (Glee Cast Version)" "Chandelier" "(There's Gotta Be) More To Life" "Halo" ...
+
 {% endhighlight %}
 
 The attributes, or *features* in machine learning terminology, are the variables that our mathematical models take into consideration when they try to predict stuff. Our final tibble contain the following attributes for each song:
-⋅⋅* **Tempo**: The tempo of the song, measured by beats per minute (BPM).
+* **Tempo**: The tempo of the song, measured by beats per minute (BPM).
 ⋅⋅* **Energy**:The energy of a song, the higher the value, the more energetic.
 ⋅⋅* **Danceability**: The higher the value, the easier it is to dance to this song.
 ⋅⋅* **Loudness**: The higher the value, the louder the song (in dB).
