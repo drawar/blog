@@ -120,10 +120,11 @@ Below you will find a ~~chart~~ interactive chart that show the histogram distri
 <p align="center">
 <iframe src="https://lhvan.shinyapps.io/spotify-song-attribute/" style="border: none; width: 100%; height: 1000px"></iframe>
 </p>
-
 Overall, the chart gives a descriptive summary of the average song I'd like. It turned out that I tend to listen to music with a tempo of 120 BPM, a little lower than some [common music genres](https://music.stackexchange.com/questions/4525/list-of-average-genre-tempo-bpm-levels/4563#4563). To give you an idea about how slow or fast that is, *The Phantom of the Opera - Single Album Version* also has the same tempo.
 <br>
 Energy and Danceability seem to be on the high side, though not that far from the average. Mood, denoted by valence, is neutral considering I listened to a healthy mix of upbeat and melancholic songs. Speechiness and acousticness are reasonably low, considering I'm not a big fan of audio commentaries. 
 <br>
-Average song duration is 232 seconds or 3:52 minutes, a bit longer than the average radio song (3:30). The average key is approximately 5 which, according to [Pitch Class Notation](https://en.wikipedia.org/wiki/Pitch_class), translate to the key of F. Interestingly, according to an article on the [most popular keys of all music on Spotify](https://insights.spotify.com/us/2015/05/06/most-popular-keys-on-spotify/), songs written in F major/minor only accounts for a meager 8\% of all songs.
+Average song duration is 232 seconds or 3:52 minutes, a bit longer than the average radio song (3:30). The average key is approximately 5 which, according to [Pitch Class Notation](https://en.wikipedia.org/wiki/Pitch_class), translate to the key of F. Interestingly, according to an article on the [most popular keys of all music on Spotify](https://insights.spotify.com/us/2015/05/06/most-popular-keys-on-spotify/), songs written in F major/minor only accounts for a meager 8% of all songs.
 
+# So where's the playlist?
+I guess it wouldn't make sense to talk all this talk and still the playlist in question is nowhere to be found, so [here is it](https://open.spotify.com/user/spotify/playlist/37i9dQZF1CyXyPUy57ueoa). In the next post, I'll compare this playlist to some popular playlists (e.g. *Today's Top Hits*) to see how different they are.
