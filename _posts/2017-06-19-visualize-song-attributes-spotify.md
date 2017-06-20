@@ -8,8 +8,8 @@ comments: true
 ---
 
 As a die-hard music fan and a long time Spotify user, I was excited to have discovered Spotify Web API a couple of days ago. I stumbled upon an analysis of Radiohead's gloomiest songs using a combination of audio features scraped from Spotify API and that gave me some great idea to do a statistical analysis of my favorite songs.
-
-There's hardly a day gone by that I haven't used Spotify for at least half an hour, and that gave Spotify enough information to curate a playlist of my most streamed songs of 2016. The playlist contains 100 songs covering a wide spectrum of genres, and I was quite curious what insights I could learn about my musical preferences.
+<br>
+There's hardly a day gone by that I haven't used Spotify for at least half an hour, and that gave Spotify enough information to curate a playlist of my most streamed songs of 2016. The playlist contains 100 songs covering a wide spectrum of genres, and I was quite curious what insights I could gain about my musical preferences.
 ## Connecting to Spotify Web API
 <br>
 To get started with Spotify Web API, you have to first set up a developer account [here](https://developer.spotify.com/my-applications/#!/applications), register an application, and get your *Client ID* and *Client Secret*, both of which are needed to generate your access token and header value for your HTTP GET request.
@@ -114,10 +114,16 @@ The attributes, or *features* in machine learning terminology, are the variables
 - **Key**: The higher the value the pitchier the song is.
 - **Speechiness**: The higher the value the more speech-like the song is i.e. consisted of mainly spoken words.
 # Drumroll, please!
+Below you will find a ~~chart~~ interactive chart that show the histogram distribution and a kernel density curve for each attribute.
 
 <br>
 <p align="center">
-<iframe src="https://lhvan.shinyapps.io/spotify-song-attribute/" style="border: none; width: 100%; height: 700px"></iframe>
+<iframe src="https://lhvan.shinyapps.io/spotify-song-attribute/" style="border: none; width: 100%; height: 1000px"></iframe>
 </p>
 
+Overall, the chart gives a descriptive summary of the average song I'd like. It turned out that I tend to listen to music with a tempo of 120 BPM, a little lower than some [common music genres](https://music.stackexchange.com/questions/4525/list-of-average-genre-tempo-bpm-levels/4563#4563). To give you an idea about how slow or fast that is, *The Phantom of the Opera - Single Album Version* also has the same tempo.
+<br>
+Energy and Danceability seem to be on the high side, though not that far from the average. Mood, denoted by valence, is neutral considering I listened to a healthy mix of upbeat and melancholic songs. Speechiness and acousticness are reasonably low, considering I'm not a big fan of audio commentaries. 
+<br>
+Average song duration is 232 seconds or 3:52 minutes, a bit longer than the average radio song (3:30). The average key is approximately 5 which, according to [Pitch Class Notation](https://en.wikipedia.org/wiki/Pitch_class), translate to the key of F. Interestingly, according to an article on the [most popular keys of all music on Spotify](https://insights.spotify.com/us/2015/05/06/most-popular-keys-on-spotify/), songs written in F major/minor only accounts for a meager 8\% of all songs.
 
