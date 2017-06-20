@@ -14,3 +14,30 @@ There's hardly a day gone by that I haven't used Spotify for at least half an ho
 ## Connecting to Spotify Web API
 
 To get started with Spotify Web API, you have to first set up a developer account [here](https://developer.spotify.com/my-applications/#!/applications), register an application, and get your *Client ID* and *Client Secret*, both of which are needed to generate your access token and header value for your HTTP GET request.
+
+{% highlight r %}
+library(tidyverse)
+library(httr)
+
+
+clientID = 'xxxxxxxxxxxxxx'
+clientSecret = 'xxxxxxxxxxxxxx'
+
+# Get header value from Client ID and Client Secret
+# Dependencies: tidyverse, httr
+get_header_value <- function(client_id, client_secret) {
+  token <- POST(
+    'https://accounts.spotify.com/api/token',
+    accept_json(),
+    authenticate(clientID, secret),
+    body = list(grant_type = 'client_credentials'),
+    encode = 'form',
+    verbose()
+  ) %>% content %>% .$access_token
+  header_value <- paste0('Bearer ', token)
+  return(header_value)
+}
+
+header_value <- get_header_value(clientID, clientSecret)
+
+{% endhighlight %}
