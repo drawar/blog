@@ -109,5 +109,5 @@ The attributes, or *features* in machine learning terminology, are the variables
 * **Length**: The duration of the song, in ms.
 * **Acousticness**: The higher the value the more acoustic the song is.
 * **Key**: The higher the value the pitchier the song is.
-* **Speechiness**: The higher the value the more speech-like the song is i.e. consisted of mainly spoken words
+* **Speechiness**: The higher the value the more speech-like the song is i.e. consisted of mainly spoken words.
 
