@@ -100,13 +100,13 @@ I decided to exclude some attributes that I deemed not relevant to this analysis
 {% endhighlight %}
 
 The attributes, or *features* in machine learning terminology, are the variables that our mathematical models take into consideration when they try to predict stuff. Our final tibble contain the following attributes for each song:
-- **Tempo**: The tempo of the song, measured by beats per minute (BPM).
-- **Energy**:The energy of a song, the higher the value, the more energetic.
-- **Danceability**: The higher the value, the easier it is to dance to this song.
-- **Loudness**: The higher the value, the louder the song (in dB).
-- **Valence**: The higher the value, the more positive mood for the song.
-- **Length**: The duration of the song, in ms.
-- **Acousticness**: The higher the value the more acoustic the song is.
-- **Key**: The higher the value the pitchier the song is.
-- **Speechiness**: The higher the value the more speech-like the song is i.e. consisted of mainly spoken words
+⋅⋅* **Tempo**: The tempo of the song, measured by beats per minute (BPM).
+⋅⋅* **Energy**:The energy of a song, the higher the value, the more energetic.
+⋅⋅* **Danceability**: The higher the value, the easier it is to dance to this song.
+⋅⋅* **Loudness**: The higher the value, the louder the song (in dB).
+⋅⋅* **Valence**: The higher the value, the more positive mood for the song.
+⋅⋅* **Length**: The duration of the song, in ms.
+⋅⋅* **Acousticness**: The higher the value the more acoustic the song is.
+⋅⋅* **Key**: The higher the value the pitchier the song is.
+⋅⋅* **Speechiness**: The higher the value the more speech-like the song is i.e. consisted of mainly spoken words
 
