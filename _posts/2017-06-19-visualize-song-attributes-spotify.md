@@ -78,11 +78,14 @@ user_id <- 'spotify'
 playlist_id <- '37i9dQZF1CyXyPUy57ueoa'
 
 top_song <- get_playlist_tracks(user_id, playlist_id, header_value)
+
+# exclude irrelevant attributes
 top_song <- top_song %>% select(-c(mode, instrumentalness, liveness, time_signature, uri, track_href, analysis_url, type))
+
+# convert durations in ms to s
+top_song$duration_ms <- top_song$duration_ms/1000
 str(top_song)
 {% endhighlight %}
-
-I decided to exclude some attributes that I deemed not relevant to this analysis, namely **mode**, **instrumentalness**, **liveness**, **time signature**, etc. 
 
 {% highlight r %}
 ## Classes 'tbl_df', 'tbl' and 'data.frame':    100 obs. of  11 variables:
@@ -95,7 +98,7 @@ I decided to exclude some attributes that I deemed not relevant to this analysis
 ##  $ valence     : num  0.574 0.574 0.676 0.451 0.768 0.546 0.503 0.659 0.387 0.299 ...
 ##  $ tempo       : num  82.1 117.1 89.8 78.5 140 ...
 ##  $ id          : chr  "2A4nONaOJXSDBvezgxyAV4" "4VrWlk8IQxevMvERoX08iC" "2x5qF66rFO6DERBMNkQAqn" "2CvOqDpQIMw69cCzWqr5yr" ...
-##  $ duration_ms : num  215427 216120 200387 261160 201400 ...
+##  $ duration_ms : num  215 216 200 261 201 ...
 ##  $ track_name  : chr  "Take A Bow (Glee Cast Version)" "Chandelier" "(There's Gotta Be) More To Life" "Halo" ...
 
 {% endhighlight %}
@@ -110,4 +113,11 @@ The attributes, or *features* in machine learning terminology, are the variables
 - **Acousticness**: The higher the value the more acoustic the song is.
 - **Key**: The higher the value the pitchier the song is.
 - **Speechiness**: The higher the value the more speech-like the song is i.e. consisted of mainly spoken words.
+# Drumroll, please!
+
+<br>
+<p align="center">
+<iframe src="https://lhvan.shinyapps.io/spotify-song-attribute/" style="border: none; width: 100%; height: 700px"></iframe>
+</p>
+
 
