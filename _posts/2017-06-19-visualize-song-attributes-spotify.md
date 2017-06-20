@@ -3,7 +3,7 @@ layout: post
 title:  "Visualizing song attributes from Spotify"
 date:   2017-06-19
 tags: spotify
-image: /assets/article_images/2014-08-29-welcome-to-jekyll/desktop.JPG
+image: /assets/article_images/2017-06-19-visualize-song-attributes-spotify/spotify-top-song.JPG
 comments: true
 ---
 
