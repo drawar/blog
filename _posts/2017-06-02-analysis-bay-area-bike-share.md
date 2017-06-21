@@ -3,7 +3,7 @@ layout: post
 title:  "Bay Area Bike Share Analysis"
 date:   2017-06-02
 tags: algo cpp
-image: /assets/article_images/2017-06-02-analysis-bay-are-bike-share/bike-share.jpg
+image: /assets/article_images/2017-06-02-analysis-bay-area-bike-share/bike_share.jpg
 comments: true
 ---
 
@@ -13,18 +13,19 @@ In this particular project, I experimented with two of the major parts of the da
 * When is Bay Area Bike Share used most often?
 * What is the most popular route?
 * How long, on average, does a trip take?
-## Project website
+<br>
+# Project website
 <br>
 The project was done in a Jupyter Notebook, which can be found [here](https://github.com/drawar/data-analyst-nanodegree/blob/master/wk1/dandp0-bikeshareanalysis/Bay_Area_Bike_Share_Analysis.ipynb).
-## Sample screenshots
+# Sample screenshots
 <p align="center">
- <img src="/assets/article_images/2017-06-02-analysis-bay-are-bike-share/image1.png" width="600" height="400" />
+ <img src="/assets/article_images/2017-06-02-analysis-bay-area-bike-share/image1.png" width="600" height="400" />
 </p>
 <p align="center">
- <img src="/assets/article_images/2017-06-02-analysis-bay-are-bike-share/image2.png" width="600" height="400" />
+ <img src="/assets/article_images/2017-06-02-analysis-bay-area-bike-share/image2.png" width="600" height="400" />
 </p>
 <p align="center">
- <img src="/assets/article_images/2017-06-02-analysis-bay-are-bike-share/image3.png" width="600" height="400" />
+ <img src="/assets/article_images/2017-06-02-analysis-bay-area-bike-share/image3.png" width="600" height="400" />
 </p>
 
 

@@ -113,6 +113,7 @@ The attributes, or *features* in machine learning terminology, are the variables
 - **Acousticness**: The higher the value the more acoustic the song is.
 - **Key**: The higher the value the pitchier the song is.
 - **Speechiness**: The higher the value the more speech-like the song is i.e. consisted of mainly spoken words.
+<br>
 # Drumroll, please!
 Below you will find a ~~chart~~ interactive chart that show the histogram distribution and a kernel density curve for each attribute.
 
