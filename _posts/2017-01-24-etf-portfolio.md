@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Optimal ETF Portfolio"
-date: 24 Jan 2017
+date: 2017-01-24
 categories: posts
 tags:  r quant shiny
 image: /assets/article_images/2017-01-24-etf-portfolio/stock-market.jpg
