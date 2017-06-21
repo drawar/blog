@@ -119,7 +119,7 @@ Below you will find a ~~chart~~ interactive chart that show the histogram distri
 
 <br>
 <p align="center">
-<iframe src="https://lhvan.shinyapps.io/spotify-song-attribute/" style="border: none; width: 100%; height: 1000px"></iframe>
+<iframe src="https://lhvan.shinyapps.io/spotify-song-attribute/" style="border: none; width: 100%; height: 900px"></iframe>
 </p>
 Overall, the chart gives a descriptive summary of the average song I'd like. It turned out that I tend to listen to music with a tempo of 120 BPM, a little lower than some [common music genres](https://music.stackexchange.com/questions/4525/list-of-average-genre-tempo-bpm-levels/4563#4563). To give you an idea about how slow or fast that is, *The Phantom of the Opera - Single Album Version* also has the same tempo.
 <br>
