@@ -4,6 +4,7 @@ title: "Optimal ETF Portfolio"
 date: 24 Jan 2017
 categories: posts
 tags:  r quant shiny
+image: /assets/article_images/2017-01-24-etf-portfolio/stock-market.jpg
 ---
 
 <a href="https://lhvan.shinyapps.io/ETF_Portfolio/"><img src="https://raw.githubusercontent.com/drawar/drawar.github.io/master/_posts/etf-portfolio_img1.png" width="1200" height="300" />
