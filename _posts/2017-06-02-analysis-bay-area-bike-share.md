@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Bay Area Bike Share Analysis"
-date:   2017-06-05
+date:   2017-06-02
 tags: algo cpp
 image: /assets/article_images/2017-06-02-analysis-bay-are-bike-share/bike-share.jpg
 comments: true
