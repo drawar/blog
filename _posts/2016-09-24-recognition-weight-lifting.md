@@ -77,7 +77,7 @@ dim(test)
 
 {% highlight r %}
 ## [1] 20 53
-{% highlight r %}
+{% endhighlight %}
 
 After cleaning, the training data set contains 53 variables and 19622 observations, and the testing data set has 53 variables and 20 observations. These are the variables that will be used for prediction.
 
