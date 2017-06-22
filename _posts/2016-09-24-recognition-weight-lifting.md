@@ -1,9 +1,10 @@
 ---
 layout: post
-title: "Qualitative Recognition of Weight Lifting Exercises"
+title: "Qualitative Activity Recognition of Weight Lifting Exercises"
 date: 24 Sep 2016
 categories: posts
 tags:  r ml
+image: /assets/article_images/2016-09-24-recognition-weight-lifting/dumbbells.jpg
 ---
 
 
