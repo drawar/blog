@@ -1890,7 +1890,7 @@ ax2.legend(loc='lower right', scatterpoints=1)
 
 
 
-![png]({{ site.url }}/assets/article_images/2018-07-08-predict-mlb-hof/p2-investigate-data-set_56_1.png)
+![png](/assets/article_images/2018-07-08-predict-mlb-hof/p2-investigate-data-set_56_1.png)
 
 
 Suffice to say, it's not surprising to see HoF players as high-achievers compared to their non-HoF teammates. There seem to be a positive correlation between career hits and career batting average regardless of HoF status, however the relationship is not as strong when it comes to home runs versus batting average. 
