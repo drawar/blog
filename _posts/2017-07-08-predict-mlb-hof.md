@@ -43,7 +43,7 @@ Unfortunately, it's not possible to tell if a player has been banned from baseba
 ## Data Cleaning and Pre-processing
 
 
-```python
+{% highlight python %}
 # Import data to DataFrames
 %matplotlib inline
 import pandas as pd
@@ -60,14 +60,14 @@ awards_df = pd.read_csv('AwardsPlayers.csv', usecols=['playerID','awardID','year
 allstar_df = pd.read_csv('AllstarFull.csv', usecols=['playerID','yearID'])
 hof_df = pd.read_csv('HallOfFame.csv',usecols=['playerID','yearid','votedBy','needed_note','inducted','category'])
 appearances_df = pd.read_csv('Appearances.csv')
-```
+{% endhighlight %}
 
 In general, we are only interested in players elected by the BBWAA, but we should also include two players (Roberto Clemente and Lou Gehrig) who were elected via “Special Election”, because they clearly had Hall of Fame stats, but simply bypassed the process due to untimely circumstances.
 
 Moreover, there were three occasions - in 1949, 1964, and 1967 - when the BBWAA conducted a special run-off election whereby the one player who received the most run-off votes would be elected to the HoF, so we should include players who got elected with a run-off ballot as well.
 
 
-```python
+{% highlight python %}
 hof = hof_df[((hof_df['votedBy'] == 'BBWAA') | (hof_df['votedBy'] == 'Special Election')) | (hof_df['votedBy'] == 'Run Off')]
 hof = hof[(hof['category'] == 'Player') & (hof['inducted'] == 'Y')]
 
@@ -79,17 +79,17 @@ hof['votedBy'] = 1
 
 # Give `votedBy` column a better name
 hof.rename(columns = {'votedBy':'HoF'}, inplace = True)
-```
+{% endhighlight %}
 
 Next we'll gather information about each player's performance, starting with batting statistics:
 
 
-```python
+{% highlight python %}
 # Group by playerID
 batting = batting_df.groupby('playerID', as_index = False).sum()
 batting = batting.fillna(0)
 batting.head()
-```
+{% endhighlight %}
 
 
 
@@ -237,12 +237,12 @@ The columns have somewhat cryptic names, but you can always take a look at the i
 Next up is fielding statistics:
 
 
-```python
+{% highlight python %}
 # Group by playerID
 fielding = fielding_df.groupby('playerID', as_index = False).sum()
 fielding = fielding.fillna(0)
 fielding.head()
-```
+{% endhighlight %}
 
 
 
@@ -316,23 +316,23 @@ fielding.head()
 Next, we will look at the `allstar_df` DataFrame. It contains information on which players made appearances in Allstar games. The Allstar game is an exhibition game played each year at mid-season. Major League Baseball consists of two leagues: the American league and the National league. The top 25 players from each league are selected to represent their league in the Allstar game. Hence to make appearances in the Allstar game is quite an achievement and we want to know how many Allstar games each player has participated in. 
 
 
-```python
+{% highlight python %}
 allstar = allstar_df.groupby('playerID').count().reset_index()
-```
+{% endhighlight %}
 
 It might be a good idea to rename the column 'yearID' to something else to avoid confusion.
 
 
-```python
+{% highlight python %}
 allstar.rename(columns = {'yearID':'years_allstar'}, inplace = True)
-```
+{% endhighlight %}
 
 Next up is `awards_df`, let's see how many different awards there are
 
 
-```python
+{% highlight python %}
 awards_df['awardID'].unique()
-```
+{% endhighlight %}
 
 
 
@@ -355,7 +355,7 @@ awards_df['awardID'].unique()
 That's a *lot* of awards, but not all of them are correlated with being voted into HoF. In fact, let's just focus on the more important ones, namely: Most Valuable Player, Rookie of the Year, Gold Glove, Silver Slugger, and World Series MVP awards. (Cy Young, though being a major award, is only for pitchers and thus excluded.) Now we need to count how many different awards each player managed to win.
 
 
-```python
+{% highlight python %}
 # Keeping only important awards
 awards_list = ['Most Valuable Player','Rookie of the Year','Gold Glove','Silver Slugger','World Series MVP']
 awards = awards_df[awards_df['awardID'].isin(awards_list)]
@@ -365,30 +365,30 @@ awards = awards.pivot_table(index = 'playerID', columns = 'awardID', aggfunc='co
 
 # Flatten the pivot table
 awards = pd.DataFrame(awards.to_records())
-```
+{% endhighlight %}
 
 Notice that we have inadvertently introduced a decent number of NA values that are actually zeros when making the pivot table, so we'll have to replace them accordingly. We have also changed the column names as a result of flattening our pivot table. The simplest way to fix this is by string match-and-replace. 
 
 
-```python
+{% highlight python %}
 # Fix column names after flattening
 awards.columns = [col.replace("('yearID', '", "").replace("')", "") \
                      for col in awards.columns]
 
 awards = awards.fillna(0)
-```
+{% endhighlight %}
 
 At this point we have gathered quite a decent amount of information on players' statistics, it's a good idea to try and compile them together:
 
 
-```python
+{% highlight python %}
 player_stats = batting.merge(fielding, on = 'playerID', how ='left')
 player_stats = player_stats.merge(allstar, on = 'playerID', how ='left')
 player_stats = player_stats.merge(awards, on = 'playerID', how ='left')
 player_stats = player_stats.merge(hof, on = 'playerID', how ='left')
 player_stats = player_stats.fillna(0)
 player_stats.head()
-```
+{% endhighlight %}
 
 
 
@@ -565,9 +565,9 @@ player_stats.head()
 We also need to know when a player played their last game, these can be found in the `master_df` DataFrame:
 
 
-```python
+{% highlight python %}
 master_df.head()
-```
+{% endhighlight %}
 
 
 
@@ -653,7 +653,7 @@ master_df.head()
 Data in `bats` and `throws` columns are binary values with `R` (`L`) indicating a player's batting/throwing hand is his right (left), so it's much simpler to represent the information with 0-1 integers.
 
 
-```python
+{% highlight python %}
 # Create a function to convert the `bats` and `throws` colums to numeric
 def bats_throws(col):
     if col == "R":
@@ -669,12 +669,12 @@ master_df['throws_R'] = master_df['throws'].apply(bats_throws)
 
 # Drop the old columns
 master_df = master_df.drop(['bats','throws'], axis = 1)
-```
+{% endhighlight %}
 
 Moreover, the `debut` and `finalGame` columns are currently strings so we'll need to convert them to datetime object and extract the year, since we don't need details as granular as date and month.
 
 
-```python
+{% highlight python %}
 from datetime import datetime
 
 def getYear(datestring):
@@ -686,12 +686,12 @@ master = master_df.dropna(subset = ['finalGame'])
 # Get years from strings
 master = master.join(master['finalGame'].map(getYear), lsuffix='_')
 master = master.drop('finalGame_', axis = 1)
-```
+{% endhighlight %}
 
 
-```python
+{% highlight python %}
 master.head()
-```
+{% endhighlight %}
 
 
 
@@ -777,9 +777,9 @@ master.head()
 Next up is the `appearances_df` DataFrame. This contains information on how many appearances each player had at each position for each year and will tell us how long a player has competed in the game. Let's take a look at the first few rows of the DataFrame to see what we have.
 
 
-```python
+{% highlight python %}
 appearances_df.head()
-```
+{% endhighlight %}
 
 
 
@@ -954,17 +954,17 @@ appearances_df.head()
 
 
 
-```python
+{% highlight python %}
 # Drop unnecessary columns
 appearances_df = appearances_df.drop(['G_ph', 'G_pr'], axis = 1)
 appearances = appearances_df.groupby(['playerID'], as_index = False).sum()
 appearances = appearances.fillna(0)
-```
+{% endhighlight %}
 
 
-```python
+{% highlight python %}
 appearances_df.columns
-```
+{% endhighlight %}
 
 
 
@@ -979,29 +979,29 @@ appearances_df.columns
 As mentioned earlier, this post is focused on infielders and outfielders only, so we need to pick players who only play at these positions. However, some players played at multiple different positions in the earlier years of MLB, so how are we going to filter out pitchers and catchers? There are no hard and fast rules, but we can convert these numbers into percentages and exclude people who played more than, say, 10% of their games at either of these positions.
 
 
-```python
+{% highlight python %}
 positions = appearances_df.columns[5:]
 
 # Loop through the list and divide each column by the players total games played
 for col in positions:
     column = col + '_percent'
     appearances[column] = appearances[col] / appearances['G_all'] 
-```
+{% endhighlight %}
 
 
-```python
+{% highlight python %}
 # Eliminate players who played 10% or more of their games as Pitchers or Catchers
 appearances = appearances[(appearances['G_p_percent'] < 0.1) & (appearances['G_c_percent'] < 0.1)]
 
 # Drop columns that are no longer useful
 appearances = appearances.drop(['G_p_percent','G_c_percent', 'yearID'], axis = 1)
 appearances = appearances.drop(positions.tolist(), axis = 1)
-```
+{% endhighlight %}
 
 
-```python
+{% highlight python %}
 appearances.head()
-```
+{% endhighlight %}
 
 
 
@@ -1139,13 +1139,13 @@ No it's not. It turns out as MLB progressed, different eras emerged where the am
 We only need to consider columns needed to calculate runs per game per year, the rest we can safely ignore. Also looking back at the history of MLB, the rules of baseball had not settled into place before 1900 and the game was a totally different beast back then so it makes sense to remove these rows from the data.
 
 
-```python
+{% highlight python %}
 # Runs and games per year
 runs_games = teams_df.groupby('yearID').sum()[['G','R']]
 runs_games['RPG'] = runs_games['R'] / runs_games['G']
 runs_games = runs_games.loc[1901:]
 runs_games.head()
-```
+{% endhighlight %}
 
 
 
@@ -1217,7 +1217,7 @@ runs_games.head()
 
 
 
-```python
+{% highlight python %}
 # Plot number of runs per game over time
 runs_games['RPG'].plot()
 plt.title('MLB Yearly Runs per Game')
@@ -1227,7 +1227,7 @@ plt.axvspan(1901, 1920, color='red', alpha=0.4)
 plt.axvspan(1942, 1945, color='red', alpha=0.4)
 plt.axvspan(1963, 1976, color='red', alpha=0.4)
 plt.axvspan(1993, 2009, color='red', alpha=0.4)
-```
+{% endhighlight %}
 
 
 
@@ -1243,7 +1243,7 @@ plt.axvspan(1993, 2009, color='red', alpha=0.4)
 There were indeed some periods when the number of runs per game was much higher than others. For example, the years from 1920 - 1941 saw an unprecedented high number of runs scored per game and was often referred to as the Lively Ball Era. Another sharp rise in runs per game occurred during early '90s to 2008, the Steroid Era. To capture this information, we need to convert years to eras in our player_stats DataFrame and turn them into new features (columns). We can re-use part of the codes we wrote for awards_df to accomplish this.
 
 
-```python
+{% highlight python %}
 yr_appearances = appearances_df.copy()[['yearID','playerID','teamID']]
 
 # Remove players in or before 1900
@@ -1286,7 +1286,7 @@ yr_appearances['years_playing'] = yr_appearances.sum(axis = 1)
 
 yr_appearances = yr_appearances.merge(appearances, on = 'playerID', how = 'inner')
 yr_appearances.head()
-```
+{% endhighlight %}
 
 
 
@@ -1463,11 +1463,11 @@ yr_appearances.head()
 Now that we have gathered pretty much all necessary information, it's time for a final merge. It's likely that new NA values will be created as a result of merging, so we need to check if there are any of them as well.
 
 
-```python
+{% highlight python %}
 df = master.merge(player_stats, on = 'playerID', how ='left')
 df = df.merge(yr_appearances, on = 'playerID', how ='inner')
 df.info()
-```
+{% endhighlight %}
 
     <class 'pandas.core.frame.DataFrame'>
     Int64Index: 7237 entries, 0 to 7236
@@ -1532,9 +1532,9 @@ df.info()
 The only column that has NA values is `nameFirst`, and since there are only two of them, let's not worry about these. We have finally consolidated everything into a single DataFrame with everything we need to know about the players. In the next step, we are going to draw some insights from the data by adding new features.
 
 
-```python
+{% highlight python %}
 df.head()
-```
+{% endhighlight %}
 
 
 
@@ -1721,7 +1721,7 @@ We'll start by adding important baseball statistics such as batting average, on-
 Since we are computing a lot of ratios, NA values may come about which we'll have to remove 
 
 
-```python
+{% highlight python %}
 # Create Batting Average (`AVE`) column
 df['AVE'] = df['H'] / df['AB']
 
@@ -1738,13 +1738,13 @@ hr = df['HR'] * 4
 triple = df['3B'] * 3
 double = df['2B'] * 2
 df['OPS'] = df['OBP'] + df['Slug_Percent']
-```
+{% endhighlight %}
 
 
-```python
+{% highlight python %}
 df = df.dropna()
 print(df.isnull().sum(axis=0).tolist())
-```
+{% endhighlight %}
 
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
@@ -1758,17 +1758,17 @@ Yass! Now we are free of the NA plague. Before we move on to create some plots, 
 Once we have done our homework, it's time to remove these names from our data.
 
 
-```python
+{% highlight python %}
 players = ['jacksjo01', 'rosepe01', 'giambja01', 'sheffga01', 'braunry02', 'bondsba01', \
            'palmera01', 'mcgwima01', 'clemero02', 'sosasa01', 'rodrial01']
 
 df = df[~df['playerID'].isin(players)]
-```
+{% endhighlight %}
 
 Next, we will plot out the distributions for certain statistics such as Hits, Home Runs, Years Playing, and Years Featured in All Star Game for Hall of Fame players to see if there are any trends among them.
 
 
-```python
+{% highlight python %}
 # Filter players who are in HoF
 df_hof = df[df['HoF'] == 1]
 
@@ -1793,7 +1793,7 @@ ax3.set_title('Distribution of Years Playing')
 ax3.set_ylabel('HoF Careers')
 sns.distplot(df_hof['years_allstar'], ax = ax4, kde = False, axlabel = False, color = 'r')
 ax4.set_title('Distribution of Years Featured in All Star Game')
-```
+{% endhighlight %}
 
     72
 
@@ -1818,7 +1818,7 @@ We have 70 Hall of Famers in our data and they all boast admirable statistics. A
 Now let's see how they fare against non-HoF players. To ensure we are comparing apples to apples, let's exclude non-HoF players with less than 10 years of experience.
 
 
-```python
+{% highlight python %}
 # Filter `df` for players with 10 or more years of experience
 df_10 = df[(df['years_playing'] >= 10) & (df['HoF'] == 0)]
 
@@ -1841,7 +1841,7 @@ ax3.set_title('Distribution of Years Playing')
 ax3.set_ylabel('HoF Careers')
 sns.distplot(df_10['years_allstar'], ax = ax4, kde = False, axlabel = False, bins = 8)
 ax4.set_title('Distribution of Years Featured in All Star Game')
-```
+{% endhighlight %}
 
     1665
 
@@ -1862,7 +1862,7 @@ There are 1675 non-HoF players in our data and it's fair to say that most of the
 Next we want to see how Hits vs. Batting Average and Home Runs vs. Batting Average differ between HoF and non-HoF players.
 
 
-```python
+{% highlight python %}
 # Initialize the figure and add subplots
 fig = plt.figure(figsize=(14, 7))
 ax1 = fig.add_subplot(1,2,1)
@@ -1880,7 +1880,7 @@ ax2.set_title('Career Home Runs vs. Career Batting Average')
 ax2.set_xlabel('Career Home Runs')
 ax2.legend(loc='lower right', scatterpoints=1)
 
-```
+{% endhighlight %}
 
 
 
@@ -1890,7 +1890,7 @@ ax2.legend(loc='lower right', scatterpoints=1)
 
 
 
-![png](/assets/article_images/2018-07-08-predict-mlb-hof/p2-investigate-data-set_56_1.png)
+![png](assets/article_images/2018-07-08-predict-mlb-hof/p2-investigate-data-set_56_1.png)
 
 
 Suffice to say, it's not surprising to see HoF players as high-achievers compared to their non-HoF teammates. There seem to be a positive correlation between career hits and career batting average regardless of HoF status, however the relationship is not as strong when it comes to home runs versus batting average. 
@@ -1902,7 +1902,7 @@ With this we have answered the first question posed at the beginning of this pos
 Since a player must wait 5 years to become eligible for the HoF ballot, and can remain on the ballot for as many as 10 years then there are still eligible players who played their final season in the last 15 years. Hence those who played their last games in 2003 will be eligible for consideration in 2018 and so on. 
 
 
-```python
+{% highlight python %}
 # Filter `df` for players who retired more than 15 years ago
 df_hitters = df[df['finalGame'] < 2002]
 
@@ -1917,18 +1917,18 @@ df_eligible = df_eligible[df_eligible['HoF'] != 1]
 
 # Add these players to `df_hitters`
 df_hitters = df_hitters.append(early_inductees)
-```
+{% endhighlight %}
 
 `df_hitters` is what we will use to train and test our model on since it contains statistics of past Hall of Famers while `df_eligible` is the "new" data consisting of eligible players that we would like to make predictions of.
 
 
-```python
+{% highlight python %}
 print(len(df_hitters))
 
 # Separate `df_hitters` into target (response) and features (predictors)
 target = df_hitters['HoF']
 features = df_hitters.drop(['playerID', 'nameFirst', 'nameLast', 'HoF'], axis=1)
-```
+{% endhighlight %}
 
     5487
 
@@ -1938,7 +1938,7 @@ features = df_hitters.drop(['playerID', 'nameFirst', 'nameLast', 'HoF'], axis=1)
 The first model we'll try is a Logistic Regression model and we'll be using the Kfold cross-validation technique.
 
 
-```python
+{% highlight python %}
 from sklearn.cross_validation import cross_val_predict, KFold
 from sklearn.linear_model import LogisticRegression
 
@@ -1950,7 +1950,7 @@ kf = KFold(features.shape[0], random_state=1)
 
 # Create predictions using cross validation
 predictions_lr = cross_val_predict(lr, features, target, cv=kf)
-```
+{% endhighlight %}
 
 To determine accuracy, we need to compare our predictions to the target. The error metrics we'll be using are counts and rates of True Positive (TP), False Positive (FP), and False Negative (FN), whose definitions are given below:
 
@@ -1966,17 +1966,17 @@ From here, we can compute the rates as follows:
 * False Positive rate: # False Positive / (# False Positive + # True Negative)
 
 
-```python
+{% highlight python %}
 # Import NumPy as np
 import numpy as np
 
 # Convert predictions and target to NumPy arrays
 np_predictions_lr = np.asarray(predictions_lr)
 np_target = target.as_matrix()
-```
+{% endhighlight %}
 
 
-```python
+{% highlight python %}
 # Create a function to report TP, FP, and FN rates
 def predAccuracy(predictions, target):
     
@@ -2014,13 +2014,13 @@ def predAccuracy(predictions, target):
     print("True Positive Rate: {0:6.4f}".format(tpr))
     print("False Negative Rate: {0:6.4f}".format(fnr))
     print("False Positive Rate: {0:6.4f}".format(fpr))
-```
+{% endhighlight %}
 
 
-```python
+{% highlight python %}
 # Accuracy rates of logistic regression model
 predAccuracy(np_predictions_lr, np_target)
-```
+{% endhighlight %}
 
     True Positive Count: 60
     False Negative Count: 12
@@ -2035,7 +2035,7 @@ predAccuracy(np_predictions_lr, np_target)
 What we're trying to answer is a classic example of a classification problem, and it would be a crime not to mention random forest algorithm at some point. In the following we'll see how this algorithm stacks up against the logistic regression model.
 
 
-```python
+{% highlight python %}
 # Import RandomForestClassifier from sklearn
 from sklearn.ensemble import RandomForestClassifier
 
@@ -2053,13 +2053,13 @@ predictions_rf = cross_val_predict(rf, features, target, cv=kf)
 
 # Convert predictions to NumPy array
 np_predictions_rf = np.asarray(predictions_rf)
-```
+{% endhighlight %}
 
 
-```python
+{% highlight python %}
 # Accuracy rates of random forest model
 predAccuracy(np_predictions_rf, np_target)
-```
+{% endhighlight %}
 
     True Positive Count: 51
     False Negative Count: 21
@@ -2076,7 +2076,7 @@ Although the random forest is less accurate, predicting only 51 of 72 Hall of Fa
 We'll use the trained and tested random forest model to make predictions on the probability of getting voted into the HoF for each player in `df_eligible` and then print out 50 players who have the highest chance of doing so. This will also answer our second question.
 
 
-```python
+{% highlight python %}
 # Create a new features DataFrame
 new_features = df_eligible.drop(['playerID', 'nameFirst', 'nameLast', 'HoF'], axis=1)
 
@@ -2099,7 +2099,7 @@ new_data.head()
 hof_predictions = hof_predictions.join(new_data, how = 'left')
 hof_predictions.index = range(len(hof_predictions))
 hof_predictions.head(50)
-```
+{% endhighlight %}
 
 
 
@@ -3371,6 +3371,6 @@ This brings us to a related question: how much would steroid suspicions hurt the
 8. [Hall of Fame Classification Using Random Forest](https://baseballwithr.wordpress.com/2014/11/26/hall-of-fame-classification-using-randomforest/)
 
 
-```python
+{% highlight python %}
 
-```
+{% endhighlight %}
