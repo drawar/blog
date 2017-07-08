@@ -3,7 +3,7 @@ layout: post
 title:  "Predicting MLB Hall of Famers"
 date:   2017-07-08
 tags: spotify
-image: /assets/article_images/2017-06-19-visualize-song-attributes-spotify/spotify-top-song.jpg
+image: /assets/article_images/2017-07-08-predict-mlb-hof/induction.jpg
 comments: true
 ---
 
@@ -1237,7 +1237,7 @@ plt.axvspan(1993, 2009, color='red', alpha=0.4)
 
 
 
-![png]({{ site.url }}/assets/article_images/2018-07-08-predict-mlb-hof/p2-investigate-data-set_39_1.png)
+![png](https://raw.githubusercontent.com/drawar/blog/master/assets/article_images/2018-07-08-predict-mlb-hof/p2-investigate-data-set_39_1.png)
 
 
 There were indeed some periods when the number of runs per game was much higher than others. For example, the years from 1920 - 1941 saw an unprecedented high number of runs scored per game and was often referred to as the Lively Ball Era. Another sharp rise in runs per game occurred during early '90s to 2008, the Steroid Era. To capture this information, we need to convert years to eras in our player_stats DataFrame and turn them into new features (columns). We can re-use part of the codes we wrote for awards_df to accomplish this.
@@ -1806,7 +1806,7 @@ ax4.set_title('Distribution of Years Featured in All Star Game')
 
 
 
-![png]({{ site.url }}/assets/article_images/2018-07-08-predict-mlb-hof/p2-investigate-data-set_52_2.png)
+![png](https://raw.githubusercontent.com/drawar/blog/master/assets/article_images/2018-07-08-predict-mlb-hof/p2-investigate-data-set_52_2.png)
 
 
 We have 70 Hall of Famers in our data and they all boast admirable statistics. A few points to note:
@@ -1854,7 +1854,7 @@ ax4.set_title('Distribution of Years Featured in All Star Game')
 
 
 
-![png]({{ site.url }}/assets/article_images/2018-07-08-predict-mlb-hof/p2-investigate-data-set_54_2.png)
+![png](https://raw.githubusercontent.com/drawar/blog/master/assets/article_images/2018-07-08-predict-mlb-hof/p2-investigate-data-set_54_2.png)
 
 
 There are 1675 non-HoF players in our data and it's fair to say that most of them are less experienced players, which partly explains their lackluster statistics compared to the veterans who have made it to Cooperstown.
@@ -1890,7 +1890,7 @@ ax2.legend(loc='lower right', scatterpoints=1)
 
 
 
-![png](assets/article_images/2018-07-08-predict-mlb-hof/p2-investigate-data-set_56_1.png)
+![png](https://raw.githubusercontent.com/drawar/blog/master/assets/article_images/2018-07-08-predict-mlb-hof/p2-investigate-data-set_56_1.png)
 
 
 Suffice to say, it's not surprising to see HoF players as high-achievers compared to their non-HoF teammates. There seem to be a positive correlation between career hits and career batting average regardless of HoF status, however the relationship is not as strong when it comes to home runs versus batting average. 
