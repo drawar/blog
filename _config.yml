@@ -1,6 +1,5 @@
 # Build settings
 gems:
-  - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-paginate
   - jekyll-gist
@@ -73,7 +72,7 @@ bing_verify:
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 timezone:    Asia/Singapore
 future:      false  # publish future dated posts --  true, false (default) 
-highlighter: rouge
+highlighter: false
 markdown:    kramdown
 
 sass:
