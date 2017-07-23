@@ -2,7 +2,7 @@
 layout: post
 title:  "Bay Area Bike Share Analysis"
 date:   2017-06-02
-tags: algo cpp
+tags: eda
 image: /assets/article_images/2017-06-02-analysis-bay-area-bike-share/bike_share.jpg
 comments: true
 ---
@@ -16,7 +16,7 @@ In this particular project, I experimented with two of the major parts of the da
 
 # Project website
 
-The project was done in a Jupyter Notebook, which can be found [here](https://www.udacity.com/course/data-analyst-nanodegree--nd002)
+The project was done in a Jupyter Notebook, which can be found [here](http://bit.ly/2uVngHh)
 # Sample screenshots
 <p align="center">
  <img src="https://raw.githubusercontent.com/drawar/blog/master/assets/article_images/2017-06-02-analysis-bay-area-bike-share/image1.png" width="600" height="400" />
