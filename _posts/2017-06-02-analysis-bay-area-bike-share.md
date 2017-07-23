@@ -16,7 +16,7 @@ In this particular project, I experimented with two of the major parts of the da
 <br>
 # Project website
 <br>
-The project was done in a Jupyter Notebook, which can be found [here](https://github.com/drawar/data-analyst-nanodegree/blob/master/wk1/dandp0-bikeshareanalysis/Bay_Area_Bike_Share_Analysis.ipynb).
+The project was done in a Jupyter Notebook, which can be found [here](https://github.com/drawar/data-analyst-nanodegree/blob/master/intro/dandp0-bikeshareanalysis/.ipynb_checkpoints/Bay_Area_Bike_Share_Analysis-checkpoint.ipynb).
 # Sample screenshots
 <p align="center">
  <img src="https://raw.githubusercontent.com/drawar/blog/master/assets/article_images/2017-06-02-analysis-bay-area-bike-share/image1.png" width="600" height="400" />
