@@ -2,7 +2,6 @@
 layout: post
 title:  "Solving Lunar Lander with Double Dueling Deep Q-Network and PyTorch"
 date:   2019-05-12
-categories: posts
 tags: dqn pytorch
 comments: true
 ---

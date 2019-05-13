@@ -2,7 +2,7 @@
 layout: post
 title:  "Predicting MLB Hall of Famers"
 date:   2017-07-08
-tags: spotify
+tags: logistic regression
 image: /assets/article_images/2017-07-08-predict-mlb-hof/induction.jpg
 comments: true
 ---
